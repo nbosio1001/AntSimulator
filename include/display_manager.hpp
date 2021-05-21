@@ -44,6 +44,7 @@ public:
 	bool wall_mode;
 	bool render_ants;
 	bool remove_wall;
+	bool follow = false;
 	ColonyRenderer colony_renderer;
 	sf::Font font;
 	sf::Text text;

@@ -99,6 +99,7 @@ void DisplayManager::processEvents()
 			else if (event.key.code == sf::Keyboard::Space) update = !update;
 			else if (event.key.code == sf::Keyboard::D) m_world.renderer.draw_density = !m_world.renderer.draw_density;
 			else if (event.key.code == sf::Keyboard::P) pause = !pause;
+			else if (event.key.code == sf::Keyboard::F) { follow = true; }
 			else if (event.key.code == sf::Keyboard::E) {
 				remove_wall = !remove_wall;
 				if (remove_wall) {

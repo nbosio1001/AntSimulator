@@ -67,6 +67,7 @@ int main()
 	display_manager.render_ants = true;
 	world.renderer.draw_density = false;
 	world.renderer.draw_markers = false;
+	int32_t selected_ant = -1;
 
 	sf::Clock clock;
 	RMean<float> fps(100);
@@ -74,10 +75,10 @@ int main()
 	while (window.isOpen())
 	{
 		display_manager.processEvents();
+		const sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
+		const sf::Vector2f world_position = display_manager.displayCoordToWorldCoord(sf::Vector2f(to<float>(mouse_position.x), to<float>(mouse_position.y)));
 		// Add food on clic
 		if (display_manager.clic) {
-			const sf::Vector2i mouse_position = sf::Mouse::getPosition(window);
-			const sf::Vector2f world_position = display_manager.displayCoordToWorldCoord(sf::Vector2f(to<float>(mouse_position.x), to<float>(mouse_position.y)));
 			const float clic_min_dist = 2.0f;
 			if (getLength(world_position - last_clic) > clic_min_dist) {
 				if (display_manager.wall_mode) {
@@ -93,6 +94,19 @@ int main()
 			}
 		}
 
+		if (display_manager.follow) {
+			display_manager.follow = false;
+			selected_ant = -1;
+			uint32_t i = 0;
+			for (Ant& a : colony.ants) {
+				if (getLength(a.position - world_position) < 10.0f) {
+					selected_ant = i;
+					break;
+				}
+				++i;
+			}
+		}
+
 		const float dt = 0.016f;
 
 		if (!display_manager.pause) {
@@ -102,6 +116,16 @@ int main()
 		}
 
 		window.clear(sf::Color(94, 87, 87));
+
+		if (selected_ant > -1) {
+			display_manager.setOffset(colony.ants[selected_ant].position);
+			const float radius = 10.0f * display_manager.getZoom();
+			sf::CircleShape c(radius);
+			c.setOrigin(radius, radius);
+			c.setPosition(Conf::WIN_WIDTH * 0.5f, Conf::WIN_HEIGHT * 0.5f);
+			window.draw(c);
+		}
+
 		display_manager.draw();
 		window.display();
 
