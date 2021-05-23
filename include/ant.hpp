@@ -253,7 +253,7 @@ struct Ant
 			world.addMarker(position, phase == Mode::ToFood ? Mode::ToHome : Mode::ToFood, intensity);
 		}
 		else if (phase == Mode::ToHomeNoFood) {
-			const float intensity = getMarkerIntensity(0.3f);
+			const float intensity = getMarkerIntensity(0.05f);
 			world.addMarkerRepellent(position, intensity);
 		}
 	}

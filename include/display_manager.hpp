@@ -48,6 +48,16 @@ public:
 	sf::Font font;
 	sf::Text text;
 
+	sf::RenderStates getStates() const
+	{
+		sf::RenderStates rs;
+		rs.transform.translate(m_windowOffsetX, m_windowOffsetY);
+		rs.transform.scale(m_zoom, m_zoom);
+		rs.transform.translate(-m_offsetX, -m_offsetY);
+		rs.texture = nullptr;
+		return rs;
+	}
+
 	sf::Vector2f getClicPosition() const
 	{
 		return sf::Vector2f(to<float>(m_clic_position.x), to<float>(m_clic_position.y));

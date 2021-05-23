@@ -65,16 +65,7 @@ struct WorldRenderer : public AsyncRenderer
 						va[4 * i + 3].texCoords = sf::Vector2f(200.0f + offset, 100.0f - offset);
 					}
 					else {
-						if (0) {
-							const float ratio = std::min(1.0f, cell.discovered);
-							color = sf::Color(50 * ratio, 50 * ratio, 50 * ratio);
-							const float offset = 32.0f;
-							va[4 * i + 0].texCoords = sf::Vector2f(200.0f + offset, offset);
-							va[4 * i + 1].texCoords = sf::Vector2f(300.0f - offset, offset);
-							va[4 * i + 2].texCoords = sf::Vector2f(300.0f - offset, 100.0f - offset);
-							va[4 * i + 3].texCoords = sf::Vector2f(200.0f + offset, 100.0f - offset);
-						}
-						else if (draw_markers) {
+						if (draw_markers) {
 							const float offset = 32.0f;
 							if (cell.repellent) {
 								color = sf::Color::Blue;

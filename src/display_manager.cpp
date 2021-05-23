@@ -58,11 +58,7 @@ void DisplayManager::draw()
     sf::RectangleShape ground(sf::Vector2f(m_world.size.x, m_world.size.y));
     ground.setFillColor(sf::Color::Black);
 
-	sf::RenderStates rs_ground;
-	rs_ground.transform.translate(m_windowOffsetX, m_windowOffsetY);
-	rs_ground.transform.scale(m_zoom, m_zoom);
-	rs_ground.transform.translate(-m_offsetX, -m_offsetY);
-    m_target.draw(ground, rs_ground);
+	sf::RenderStates rs_ground = getStates();
 
 	sf::RenderStates rs = rs_ground;
 
@@ -126,7 +122,7 @@ void DisplayManager::processEvents()
 			break;
 		case sf::Event::MouseWheelMoved:
 			// this is an amazing zoom
-			zoom(1 + event.mouseWheel.delta * 0.2f);
+			zoom(1 + event.mouseWheel.delta * 0.05f);
 			break;
 		case sf::Event::MouseButtonPressed:
 			if (event.mouseButton.button == sf::Mouse::Left)

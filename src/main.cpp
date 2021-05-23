@@ -105,9 +105,9 @@ int main()
 			world.update(dt);
 		}
 
-		window.clear(sf::Color(94, 87, 87));
+		window.clear(sf::Color::Black);
 		display_manager.draw();
-		sf::RenderStates states;
+		sf::RenderStates states = display_manager.getStates();
 		renderer.renderAnts(colony, window, states);
 		renderer.render(colony, window, states);
 		renderer.renderAnts(colony2, window, states);
