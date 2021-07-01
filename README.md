@@ -51,3 +51,7 @@ Detailed explanation [here](https://preshing.com/20170511/how-to-build-a-cmake-b
 |**Right click**|Add food|
 |**Left click**|Move view|
 |**Wheel**|Zoom|
+
+
+# Following Tutorial: Build your SFML project with CMake
+https://github.com/SFML/SFML/wiki/Tutorial%3A-Build-your-SFML-project-with-CMake
