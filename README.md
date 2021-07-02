@@ -55,3 +55,6 @@ Detailed explanation [here](https://preshing.com/20170511/how-to-build-a-cmake-b
 
 # Following Tutorial: Build your SFML project with CMake
 https://github.com/SFML/SFML/wiki/Tutorial%3A-Build-your-SFML-project-with-CMake
+
+Adding FindSFML.cmake to usr/lib since this is the SFML standard path
+This did not fix my problem.
