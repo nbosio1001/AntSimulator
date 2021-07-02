@@ -6,7 +6,7 @@ if(NOT CMAKE_BUILD_TYPE)
    set(CMAKE_BUILD_TYPE Release)
 endif()
 
-
+set(CMAKE_MODULE_PATH "/usr/lib")
 find_package(SFML 2 REQUIRED COMPONENTS graphics system window)
 find_package(Threads REQUIRED)
 
